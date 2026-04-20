@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master English Grammar | The Ultimate Guide</title>
+    <!-- Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Core Colors */
+            --bg-base: #fcfbf9;
+            --bg-surface: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #4b5563; /* Darkened slightly for better readability */
+            --border-light: #e5e7eb;
+            
+            /* Shadows & Transitions */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .serif { font-family: 'Fraunces', serif; }
+
+        /* Top Progress Bar */
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 4px;
+            background: linear-gradient(90deg, #115e59, #b45309, #5b21b6, #1d4ed8, #9d174d);
+            width: 0%; z-index: 1000; transition: width 0.1s;
+        }
+
+        /* Glassmorphic Navigation */
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-light);
+            padding: 0 2rem; display: flex; align-items: center;
+            overflow-x: auto; scrollbar-width: none; box-shadow: var(--shadow-sm);
+        }
+        nav::-webkit-scrollbar { display: none; }
+
+        .nav-brand {
+            font-family: 'Fraunces', serif; font-weight: 800; font-size: 1.25rem;
+            padding: 1rem 1.5rem 1rem 0; margin-right: 1rem;
+            border-right: 1px solid var(--border-light); white-space: nowrap;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+
+        nav a {
+            text-decoration: none; color: var(--text-muted);
+            font-size: 0.875rem; font-weight: 600; padding: 1.25rem 1rem;
+            white-space: nowrap; transition: var(--transition);
+            border-bottom: 2px solid transparent;
+        }
+        nav a:hover, nav a.active { color: var(--text-main); border-bottom-color: var(--text-main); }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 6rem; text-align: center;
+            background: radial-gradient(circle at top right, #fefce8, transparent),
+                        radial-gradient(circle at top left, #f3f4f6, transparent);
+            border-bottom: 1px solid var(--border-light); position: relative;
+        }
+
+        .badge-pill {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: var(--bg-surface); border: 1px solid var(--border-light);
+            padding: 0.5rem 1rem; border-radius: 9999px;
+            font-size: 0.875rem; font-weight: 600; color: var(--text-muted);
+            margin-bottom: 2rem; box-shadow: var(--shadow-sm);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem); line-height: 1.1;
+            font-weight: 800; letter-spacing: -0.03em;
+            margin-bottom: 1.5rem; color: var(--text-main);
+        }
+
+        .hero h1 span {
+            font-style: italic; background: linear-gradient(120deg, #b45309, #115e59);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.125rem; color: var(--text-muted);
+            max-width: 700px; margin: 0 auto 3rem;
+        }
+
+        /* Container & Section Styles */
+        .container { max-width: 1100px; margin: 0 auto; padding: 4rem 1.5rem; }
+        section {
+            margin-bottom: 6rem; opacity: 0; transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        section.visible { opacity: 1; transform: translateY(0); }
+
+        /* Pos Header */
+        .pos-header { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.5rem; }
+        .pos-number {
+            font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 600;
+            width: 60px; height: 60px; display: flex; align-items: center;
+            justify-content: center; border-radius: 16px; flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .pos-title-wrap h2 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        .pos-subtitle { font-size: 1.125rem; color: var(--text-muted); max-width: 600px; }
+
+        /* Definitions & Examples */
+        .def-card {
+            background: var(--bg-surface); border: 1px solid var(--border-light);
+            border-left: 6px solid; padding: 2rem; border-radius: 12px;
+            margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);
+        }
+        .def-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 0.75rem; }
+        .def-text { font-size: 1.25rem; font-family: 'Fraunces', serif; line-height: 1.5; color: var(--text-main); }
+
+        .examples-box {
+            background: #fafafa; border: 1px solid var(--border-light); border-left: 4px solid;
+            padding: 1.5rem 2rem; border-radius: 0 12px 12px 0; margin-bottom: 3rem;
+        }
+        .examples-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; color: var(--text-muted); }
+        .example-sentence { font-family: 'Fraunces', serif; font-size: 1.15rem; margin-bottom: 0.85rem; color: var(--text-main); line-height: 1.5; }
+        .example-sentence:last-child { margin-bottom: 0; }
+        .highlight { font-weight: 800; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+
+        /* Grids */
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .info-card {
+            background: var(--bg-surface); border: 1px solid var(--border-light);
+            padding: 1.75rem; border-radius: 16px; transition: var(--transition);
+            display: flex; flex-direction: column;
+        }
+        .info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: transparent; }
+        .card-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .card-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
+        .tag-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
+        .tag { font-size: 0.85rem; font-weight: 600; padding: 0.35rem 0.85rem; border-radius: 6px; background: var(--bg-base); border: 1px solid var(--border-light); }
+
+        /* Rules Box */
+        .rules-box { background: #111827; color: #f9fafb; padding: 3rem; border-radius: 16px; position: relative; overflow: hidden; margin-bottom: 2rem;}
+        .rules-box::after {
+            content: ''; position: absolute; top: 0; right: 0; width: 250px; height: 250px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); border-radius: 50%; transform: translate(30%, -30%);
+        }
+        .rules-title { font-family: 'Fraunces', serif; font-size: 1.75rem; margin-bottom: 1.5rem; color: #fcd34d; }
+        .rules-list { list-style: none; }
+        .rules-list li { position: relative; padding-left: 1.75rem; margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.6; color: #e5e7eb; }
+        .rules-list li::before { content: '→'; position: absolute; left: 0; color: #fcd34d; font-weight: bold; font-size: 1.2rem; top: -2px;}
+        .rules-list li strong { color: #ffffff; }
+
+        /* Tables & Structure */
+        .table-container { overflow-x: auto; background: var(--bg-surface); border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); margin-bottom: 3rem; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th { background: #f8fafc; padding: 1.25rem 1.5rem; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); border-bottom: 2px solid var(--border-light); }
+        td { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-light); font-size: 1rem; vertical-align: top; }
+        tr:last-child td { border-bottom: none; } tr:hover td { background: #f8fafc; }
+        .formula-tag { font-family: monospace; background: #e2e8f0; padding: 0.35rem 0.65rem; border-radius: 6px; color: #334155; font-weight: 600; font-size: 0.9rem; display: inline-block; margin-bottom: 0.5rem;}
+        .sub-text { font-size: 0.85rem; color: var(--text-muted); display: block; margin-top: 0.25rem;}
+
+        /* Accordions */
+        .accordion { background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 12px; margin-bottom: 1rem; overflow: hidden; transition: var(--transition); }
+        .accordion-header { padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.35rem; user-select: none; background: var(--bg-surface); }
+        .accordion-header:hover { background: var(--bg-base); }
+        .accordion-icon { transition: transform 0.3s ease; }
+        .accordion.open .accordion-icon { transform: rotate(180deg); }
+        .accordion-content { padding: 0 2rem; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; background: #fafafa; }
+        .accordion.open .accordion-content { padding: 0 2rem 2rem; max-height: 3000px; border-top: 1px solid var(--border-light); }
+
+        .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+        @media(max-width: 768px) { .compare-grid { grid-template-columns: 1fr; } }
+        .compare-box { padding: 1.5rem; border-radius: 12px; font-size: 1rem; line-height: 1.5;}
+        .compare-wrong { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+        .compare-right { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+        .compare-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.75rem; letter-spacing: 0.05em; }
+
+        .builder-wrap { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; background: var(--bg-surface); padding: 3rem 2rem; border-radius: 16px; border: 1px solid var(--border-light); margin-bottom: 3rem; }
+        .b-block { text-align: center; }
+        .b-word { font-family: 'Fraunces', serif; font-size: 1.75rem; font-weight: 600; padding: 1rem 2rem; border-radius: 12px; margin-bottom: 0.75rem; box-shadow: var(--shadow-sm); }
+        .b-label { font-size: 0.8rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); letter-spacing: 0.05em; }
+        .b-plus { font-size: 2rem; color: var(--border-light); font-weight: 300; margin-bottom: 2rem; padding: 0 0.5rem;}
+
+        .section-divider { text-align: center; margin: 6rem 0; position: relative; }
+        .section-divider::after { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--border-light); z-index: -1; }
+        .section-divider span { background: var(--bg-base); padding: 0 2rem; font-family: 'Fraunces', serif; font-style: italic; font-size: 1.5rem; color: var(--text-muted); font-weight: 600;}
+
+        footer { text-align: center; padding: 4rem 2rem; background: var(--text-main); color: white; font-size: 1rem; }
+        .quick-index { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; max-width: 900px; margin: 0 auto; }
+        .qi-pill { text-decoration: none; padding: 0.6rem 1.25rem; border-radius: 999px; font-size: 0.95rem; font-weight: 600; transition: var(--transition); border: 1px solid transparent; }
+        .qi-pill:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+    <nav id="navbar"></nav>
+    <div id="hero-container"></div>
+    <div class="container" id="main-content"></div>
+    <footer id="footer">
+        <div class="nav-brand" style="justify-content: center; border: none; margin: 0 0 1rem 0; color: white;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+            GrammarGuide
+        </div>
+        <p>&copy; 2026 The Ultimate English Grammar Framework. Built for complete linguistic mastery.</p>
+    </footer>
+
+    <script>
+        // =====================================================================
+        // 1. MASSIVE DATA STORE (JSON) - THE HEART OF THE APPLICATION
+        // =====================================================================
+        const grammarData = {
+            hero: {
+                title: "Master English<br><span>Grammar & Speech</span>",
+                description: "The ultimate, zero-compromise linguistic guide. Explore the 9 parts of speech, master all 12 tenses, understand deep sentence architecture (Conditionals & Voices), and unlock the practical mechanics of flawless speaking."
+            },
+            partsOfSpeech: [
+                {
+                    id: "nouns", number: "01", name: "Noun", color: "#115e59", bg: "#ccfbf1",
+                    subtitle: "The naming anchor of every sentence: people, places, concepts, and objects.",
+                    definition: "A noun is a <strong>naming word</strong>. Functionally, it is the only part of speech that can act as a sentence's subject, direct object, or object of a preposition.",
+                    examples: [
+                        "The brilliant <span class='highlight' style='color:#115e59'>architect</span> designed a magnificent <span class='highlight' style='color:#115e59'>bridge</span> in the heart of <span class='highlight' style='color:#115e59'>London</span>.",
+                        "His profound <span class='highlight' style='color:#115e59'>courage</span> gave the failing <span class='highlight' style='color:#115e59'>team</span> enough <span class='highlight' style='color:#115e59'>motivation</span> to secure the <span class='highlight' style='color:#115e59'>victory</span>.",
+                        "<span class='highlight' style='color:#115e59'>Swimming</span> is my favorite form of <span class='highlight' style='color:#115e59'>exercise</span>. <em>(Gerund acting as noun)</em>"
+                    ],
+                    types: [
+                        { name: "Proper Noun", desc: "Specific, unique entities. They strictly require capitalization.", tags: ["London", "Sarah", "Google", "Tuesday"] },
+                        { name: "Common Noun", desc: "General, non-specific categories. Capitalized only at the start of sentences.", tags: ["city", "woman", "company", "day"] },
+                        { name: "Abstract Noun", desc: "Concepts, philosophies, or emotions you cannot interact with physically.", tags: ["courage", "democracy", "love", "time"] },
+                        { name: "Collective Noun", desc: "Singular words that represent a multiple entity or group.", tags: ["team", "flock", "jury", "committee"] },
+                        { name: "Compound Noun", desc: "Two or more words combined to create a single noun.", tags: ["mother-in-law", "toothpaste", "ice cream"] },
+                        { name: "Gerund", desc: "A verb ending in '-ing' that is grammatically functioning entirely as a noun.", tags: ["reading", "running", "thinking"] }
+                    ],
+                    rulesTitle: "Advanced Noun Mechanics",
+                    rules: [
+                        "<strong>Irregular Plurals & Latin Roots:</strong> English adopts plurals from Latin/Greek. Memorize: <em>datum → data, fungus → fungi, criterion → criteria, appendix → appendices, deer → deer</em>.",
+                        "<strong>The Possessive Apostrophe Rule:</strong> For singular nouns, add <strong>'s</strong> (the dog's bone, James's car). For regular plural nouns, add the apostrophe AFTER the s (the dogs' bones). For irregular plurals, add <strong>'s</strong> (the children's toys).",
+                        "<strong>Uncountable Nouns (Mass Nouns):</strong> Words representing masses (water, air) or abstract concepts (advice, information, furniture, luggage) cannot be pluralized. Never say 'three furnitures' or 'an advice'. Say 'three pieces of furniture'.",
+                        "<strong>Appositives:</strong> A noun placed next to another noun to rename it. <em>My friend, <strong>the doctor</strong>, is arriving.</em>"
+                    ]
+                },
+                {
+                    id: "verbs", number: "02", name: "Verb", color: "#b45309", bg: "#ffedd5",
+                    subtitle: "The engine of the sentence; expresses action, occurrence, or state of being.",
+                    definition: "The verb is the absolute core of the sentence. Without a verb, you have a fragment. Verbs dictate tense (time) and mood (intent).",
+                    examples: [
+                        "She <span class='highlight' style='color:#b45309'>sprinted</span> across the field, <span class='highlight' style='color:#b45309'>dodged</span> the defender, and <span class='highlight' style='color:#b45309'>scored</span>.",
+                        "I <span class='highlight' style='color:#b45309'>am</span> exhausted, but I <span class='highlight' style='color:#b45309'>must finish</span> analyzing this data tonight.",
+                        "If I <span class='highlight' style='color:#b45309'>were</span> the manager, I <span class='highlight' style='color:#b45309'>would implement</span> a new strategy. <em>(Subjunctive mood)</em>"
+                    ],
+                    types: [
+                        { name: "Transitive Verbs", desc: "Action verbs that REQUIRE a direct object to make sense. (e.g., You can't just 'bring'. You must bring *something*).", tags: ["bring", "enjoy", "prefer"] },
+                        { name: "Intransitive Verbs", desc: "Action verbs that DO NOT take a direct object. The action completes itself.", tags: ["sleep", "arrive", "die", "smile"] },
+                        { name: "Linking Verbs", desc: "Do not express action. They act as an equals sign (=) connecting the subject to a description.", tags: ["is", "are", "seem", "become", "feel"] },
+                        { name: "Modal Auxiliaries", desc: "Helping verbs that express necessity, capability, or possibility. They never change form.", tags: ["can", "could", "must", "might", "shall"] },
+                        { name: "Infinitives", desc: "The base form of a verb preceded by 'to'. Can act as a noun, adjective, or adverb.", tags: ["to run", "to be", "to understand"] }
+                    ],
+                    rulesTitle: "Mastering Verb Nuances",
+                    rules: [
+                        "<strong>The Subjunctive Mood:</strong> Used to explore hypothetical situations, wishes, or commands. Crucially, the verb 'to be' becomes <strong>were</strong> for all subjects. (e.g., <em>If I <strong>were</strong> a billionaire...</em> NOT <em>If I was...</em>).",
+                        "<strong>Subject-Verb Agreement (Intervening Phrases):</strong> The verb agrees with the subject, NOT the noun closest to it. (e.g., <em>The box of chocolates <strong>is</strong> empty.</em> 'Box' is singular, ignore 'chocolates').",
+                        "<strong>Base Form After Modals:</strong> Always use the raw, base infinitive (without 'to') directly after a modal. (e.g., She must <strong>speak</strong>, NOT She must speaks. He might <strong>go</strong>, NOT He might goes).",
+                        "<strong>Regular vs. Irregular:</strong> Regular verbs form the past tense with -ed (walk/walked). Irregular verbs undergo internal vowel changes (sing/sang/sung, go/went/gone, cut/cut/cut)."
+                    ]
+                },
+                {
+                    id: "adjectives", number: "03", name: "Adjective", color: "#5b21b6", bg: "#ede9fe",
+                    subtitle: "The descriptor; injects detail, scale, and emotion into nouns.",
+                    definition: "Adjectives modify nouns and pronouns by answering: <em>What kind? Which one? How many? Whose?</em>",
+                    examples: [
+                        "The <span class='highlight' style='color:#5b21b6'>exhausted</span> traveler finally found a <span class='highlight' style='color:#5b21b6'>warm</span>, <span class='highlight' style='color:#5b21b6'>cozy</span> bed in the <span class='highlight' style='color:#5b21b6'>historic</span> inn.",
+                        "I am reading a <span class='highlight' style='color:#5b21b6'>fascinating</span> book about <span class='highlight' style='color:#5b21b6'>quantum</span> mechanics.",
+                        "She considers him <span class='highlight' style='color:#5b21b6'>brilliant</span>. <em>(Predicate adjective)</em>"
+                    ],
+                    types: [
+                        { name: "Descriptive", desc: "States a physical or abstract quality of the noun.", tags: ["beautiful", "cold", "tall", "arrogant"] },
+                        { name: "Predicate Adjective", desc: "Follows a linking verb and describes the subject.", tags: ["The sky is *blue*", "She looks *tired*"] },
+                        { name: "Coordinate Adjectives", desc: "Two or more adjectives that equally modify a noun. Separated by commas.", tags: ["a long, dark road", "a smart, funny girl"] },
+                        { name: "Participle Adjectives", desc: "Verb forms (-ed or -ing) acting as adjectives. (-ed = feeling, -ing = cause of feeling).", tags: ["bored / boring", "interested / interesting"] }
+                    ],
+                    rulesTitle: "Advanced Adjective Rules",
+                    rules: [
+                        "<strong>The Royal Order of Adjectives:</strong> Native speakers subconsciously follow this strict order: Quantity → Opinion/Observation → Size → Physical Quality → Shape → Age → Color → Origin → Material → Type → Purpose. (e.g., <em>A lovely, little, old, rectangular, green, French, silver whittling knife.</em>)",
+                        "<strong>Absolute Adjectives:</strong> Some words represent a supreme state and cannot be graded or compared. You cannot be 'very pregnant', 'more unique', or 'most dead'. It is simply: pregnant, unique, dead, perfect.",
+                        "<strong>Compound Adjectives & Hyphens:</strong> When two words join to modify a noun, hyphenate them ONLY if they come before the noun. (e.g., A <em>well-known</em> author. BUT: The author is <em>well known</em>)."
+                    ]
+                },
+                {
+                    id: "adverbs", number: "04", name: "Adverb", color: "#1d4ed8", bg: "#dbeafe",
+                    subtitle: "The multidimensional modifier; explains the how, when, where, and why of actions.",
+                    definition: "While adjectives modify nouns, adverbs modify verbs, adjectives, or other adverbs. They provide the circumstantial details of the sentence.",
+                    examples: [
+                        "He spoke <span class='highlight' style='color:#1d4ed8'>incredibly</span> <span class='highlight' style='color:#1d4ed8'>quietly</span> so nobody would hear him.",
+                        "<span class='highlight' style='color:#1d4ed8'>Consequently</span>, she <span class='highlight' style='color:#1d4ed8'>rarely</span> arrives <span class='highlight' style='color:#1d4ed8'>late</span> anymore.",
+                        "They are <span class='highlight' style='color:#1d4ed8'>almost</span> finished with the project <span class='highlight' style='color:#1d4ed8'>now</span>."
+                    ],
+                    types: [
+                        { name: "Adverbs of Manner", desc: "Answers HOW something is done. Frequently formed by adding -ly to adjectives.", tags: ["quickly", "carefully", "enthusiastically"] },
+                        { name: "Adverbs of Degree", desc: "Explains the intensity or extent of an adjective or verb.", tags: ["very", "almost", "extremely", "barely"] },
+                        { name: "Conjunctive Adverbs", desc: "Heavy-duty transitional words that connect two independent clauses.", tags: ["however", "therefore", "consequently", "furthermore"] },
+                        { name: "Flat Adverbs", desc: "Adverbs that have the exact same form as their adjective counterparts.", tags: ["run *fast*", "work *hard*", "arrive *early*"] }
+                    ],
+                    rulesTitle: "Adverb Nuances & Traps",
+                    rules: [
+                        "<strong>Good vs. Well:</strong> 'Good' is an adjective; 'Well' is an adverb. You do a <em>good</em> job, but you do the job <em>well</em>. (Exception: 'Well' is an adjective when referring to health: <em>I am not feeling well.</em>)",
+                        "<strong>The Double Negative Trap:</strong> Adverbs of negative frequency (hardly, barely, scarcely) cannot be paired with 'not'. (Wrong: <em>I can't hardly see.</em> Right: <em>I can hardly see.</em>)",
+                        "<strong>Conjunctive Adverb Punctuation:</strong> When joining two complete sentences with a conjunctive adverb, use a semicolon before and a comma after. (e.g., <em>It rained heavily; <strong>therefore</strong>, the match was canceled.</em>)",
+                        "<strong>Placement of Frequency Adverbs:</strong> They go BEFORE the main verb (I <em>always</em> walk), but AFTER the 'to be' verb (I am <em>always</em> happy)."
+                    ]
+                },
+                {
+                    id: "pronouns", number: "05", name: "Pronoun", color: "#9d174d", bg: "#fce7f3",
+                    subtitle: "The linguistic shortcut; replaces nouns to create flow and avoid redundancy.",
+                    definition: "Pronouns take the place of a noun (known as the antecedent). They must perfectly agree with the noun they replace in gender, number, and perspective.",
+                    examples: [
+                        "<span class='highlight' style='color:#9d174d'>She</span> confidently told <span class='highlight' style='color:#9d174d'>him</span> that the final decision was <span class='highlight' style='color:#9d174d'>hers</span>.",
+                        "The CEO <span class='highlight' style='color:#9d174d'>himself</span> reviewed the document <span class='highlight' style='color:#9d174d'>that</span> <span class='highlight' style='color:#9d174d'>I</span> submitted.",
+                        "<span class='highlight' style='color:#9d174d'>Everyone</span> must bring <span class='highlight' style='color:#9d174d'>their</span> own laptop to the seminar."
+                    ],
+                    types: [
+                        { name: "Personal (Subject/Object)", desc: "Replaces specific people or things as actors (subject) or receivers (object).", tags: ["I/me", "she/her", "they/them"] },
+                        { name: "Reflexive & Intensive", desc: "Ends in -self/-selves. Reflexive reflects back to the subject. Intensive adds emphasis.", tags: ["myself", "themselves", "herself"] },
+                        { name: "Indefinite", desc: "Refers to non-specific people or things.", tags: ["everyone", "somebody", "anything", "none"] },
+                        { name: "Relative", desc: "Introduces a dependent (relative) clause describing a noun.", tags: ["who", "whom", "whose", "which", "that"] }
+                    ],
+                    rulesTitle: "Advanced Pronoun Regulations",
+                    rules: [
+                        "<strong>The Who vs. Whom Rule:</strong> 'Who' is a subject (like He/She/They). 'Whom' is an object (like Him/Her/Them). Trick: Rephrase the sentence. If you can answer with 'Him', use 'Whom'. (e.g., <em>With <strong>whom</strong> are you going? I am going with <strong>him</strong>.</em>)",
+                        "<strong>Indefinite Pronoun Agreement:</strong> Words like <em>everyone, anybody, someone, nobody</em> are grammatically SINGULAR. (e.g., <em>Everyone <strong>is</strong> here.</em>)",
+                        "<strong>Reflexive Misuse:</strong> Never use a reflexive pronoun when a personal pronoun is correct. (Wrong: <em>Please email the report to John and myself.</em> Right: <em>Please email... to John and <strong>me</strong>.</em>)",
+                        "<strong>That vs. Which:</strong> Use 'That' for essential clauses (removes meaning if deleted). Use 'Which' for non-essential clauses (add a comma before it). (e.g., <em>The car <strong>that</strong> I bought is fast. / My car, <strong>which</strong> is red, is fast.</em>)"
+                    ]
+                },
+                {
+                    id: "prepositions", number: "06", name: "Preposition", color: "#047857", bg: "#d1fae5",
+                    subtitle: "The spatial and temporal bridge; establishes relationships between entities.",
+                    definition: "Prepositions locate nouns in space and time, or show logical relationships. A preposition MUST be followed by a noun or pronoun (the 'object of the preposition').",
+                    examples: [
+                        "The classified documents are hidden <span class='highlight' style='color:#047857'>beneath</span> the floorboards <span class='highlight' style='color:#047857'>in</span> the study.",
+                        "We will negotiate the contract <span class='highlight' style='color:#047857'>during</span> the meeting <span class='highlight' style='color:#047857'>on</span> Friday.",
+                        "She takes <span class='highlight' style='color:#047857'>after</span> her mother. <em>(Phrasal Verb)</em>"
+                    ],
+                    types: [
+                        { name: "Spatial (Place & Movement)", desc: "Dictates physical location, direction, or trajectory.", tags: ["against", "through", "across", "beneath"] },
+                        { name: "Temporal (Time)", desc: "Establishes when something occurs or its duration.", tags: ["since", "until", "throughout", "during"] },
+                        { name: "Phrasal Verbs (Verb + Prep)", desc: "A verb paired with a preposition that creates an entirely new meaning.", tags: ["give up", "look forward to", "break down"] }
+                    ],
+                    rulesTitle: "Prepositional Complexity",
+                    rules: [
+                        "<strong>The Trailing Preposition Myth:</strong> You were likely taught never to end a sentence with a preposition. This is a Latin rule falsely applied to English. It is perfectly fine to say: <em>What are you waiting <strong>for</strong>?</em> (Instead of the hyper-formal: <em>For what are you waiting?</em>)",
+                        "<strong>Between vs. Among:</strong> Use 'between' when discussing distinct, individual items (even if there are more than two: <em>Treaty between US, UK, and France</em>). Use 'among' for a collective, undefined group (<em>The money was divided among the crowd</em>).",
+                        "<strong>Since vs. For:</strong> Use 'since' with a specific starting point in time (<em>Since 2015, Since Monday</em>). Use 'for' with a duration of time (<em>For three years, For two hours</em>)."
+                    ]
+                },
+                {
+                    id: "conjunctions", number: "07", name: "Conjunction", color: "#854d0e", bg: "#fef08a",
+                    subtitle: "The structural glue; binds words, phrases, and entire clauses together.",
+                    definition: "Conjunctions allow English to be fluid and complex. They show the logical relationship between ideas (cause/effect, contrast, addition, condition).",
+                    examples: [
+                        "I prepared for months, <span class='highlight' style='color:#854d0e'>yet</span> I still felt nervous, <span class='highlight' style='color:#854d0e'>so</span> I reviewed the data again.",
+                        "<span class='highlight' style='color:#854d0e'>Even though</span> the market crashed, <span class='highlight' style='color:#854d0e'>both</span> the CEO <span class='highlight' style='color:#854d0e'>and</span> the board remained calm.",
+                        "<span class='highlight' style='color:#854d0e'>Whether</span> you succeed <span class='highlight' style='color:#854d0e'>or</span> fail depends on your discipline."
+                    ],
+                    types: [
+                        { name: "Coordinating (FANBOYS)", desc: "Connects grammatically equal elements (Noun to Noun, Clause to Clause).", tags: ["For", "And", "Nor", "But", "Or", "Yet", "So"] },
+                        { name: "Subordinating", desc: "Forces an independent clause to become dependent, establishing a time, reason, or condition.", tags: ["because", "although", "unless", "provided that"] },
+                        { name: "Correlative", desc: "Symmetrical pairs of conjunctions that must be used together to balance a sentence.", tags: ["either...or", "neither...nor", "not only...but also"] }
+                    ],
+                    rulesTitle: "Conjunction Syntax & Commas",
+                    rules: [
+                        "<strong>The Subordinating Comma Rule:</strong> If a subordinating conjunction STARTS a sentence, place a comma after the dependent clause. (<em><strong>Because</strong> it rained, we stayed inside.</em>) If it is in the MIDDLE, use no comma. (<em>We stayed inside <strong>because</strong> it rained.</em>)",
+                        "<strong>Parallel Structure with Correlative Conjunctions:</strong> Whatever grammatical form follows the first conjunction must follow the second. (Wrong: <em>He is not only <strong>smart</strong> but also <strong>plays piano</strong>.</em> Right: <em>He is not only <strong>smart</strong> but also <strong>talented</strong>.</em>)",
+                        "<strong>Starting a sentence with And/But:</strong> Despite what grade-school teachers say, you CAN start a sentence with a coordinating conjunction for stylistic impact. However, avoid it in strictly formal academic writing."
+                    ]
+                },
+                {
+                    id: "interjections", number: "08", name: "Interjection", color: "#be185d", bg: "#fdf2f8",
+                    subtitle: "The emotional outburst; raw human reaction injected into language.",
+                    definition: "Interjections are unique—they have zero grammatical relationship to the rest of the sentence. They are independent markers of sudden emotion, hesitation, or greeting.",
+                    examples: [
+                        "<span class='highlight' style='color:#be185d'>Alas!</span> The great library has burned to the ground.",
+                        "<span class='highlight' style='color:#be185d'>Well,</span> I suppose we should review the budget one more time.",
+                        "<span class='highlight' style='color:#be185d'>Eureka!</span> I have finally solved the equation."
+                    ],
+                    types: [
+                        { name: "Strong/Standalone", desc: "Expresses intense emotion and is punctuated with an exclamation mark.", tags: ["Wow!", "Ouch!", "Bingo!", "Damn!"] },
+                        { name: "Mild/Integrated", desc: "Expresses hesitation or mild thought, separated by a comma.", tags: ["Well,", "Oh,", "Hmm,", "Actually,"] },
+                        { name: "Cognitive/Fillers", desc: "Used in speech to indicate thinking or pausing.", tags: ["Uh", "Um", "Er"] }
+                    ],
+                    rulesTitle: "Punctuation & Tone",
+                    rules: [
+                        "<strong>The Exclamation Point (!):</strong> Used for strong interjections. Because the interjection forms its own independent thought, the next word MUST be capitalized. (e.g., <em><strong>Ouch! That</strong> really hurt.</em>)",
+                        "<strong>The Comma (,):</strong> Used for mild interjections that flow into the sentence. The following word is not capitalized unless it's a proper noun. (e.g., <em><strong>Oh, I</strong> didn't see you there.</em>)",
+                        "<strong>Professional Context:</strong> Interjections are highly informal. They should be strictly avoided in academic writing, legal documents, and formal business proposals."
+                    ]
+                },
+                {
+                    id: "determiners", number: "09", name: "Articles & Determiners", color: "#4338ca", bg: "#e0e7ff",
+                    subtitle: "The clarifiers; they introduce a noun and specify its scope or quantity.",
+                    definition: "Articles (A, An, The) are a sub-category of Determiners. They sit before a noun to clarify exactly what the noun refers to—is it specific, general, yours, or plural?",
+                    examples: [
+                        "I saw <span class='highlight' style='color:#4338ca'>a</span> dog. <span class='highlight' style='color:#4338ca'>The</span> dog barked for <span class='highlight' style='color:#4338ca'>an</span> hour at <span class='highlight' style='color:#4338ca'>my</span> neighbor.",
+                        "<span class='highlight' style='color:#4338ca'>Those</span> apples are rotten, but <span class='highlight' style='color:#4338ca'>some</span> peaches are still ripe.",
+                        "There is <span class='highlight' style='color:#4338ca'>enough</span> food for <span class='highlight' style='color:#4338ca'>every</span> person here."
+                    ],
+                    types: [
+                        { name: "Definite Article", desc: "Refers to a specific, unique, or previously mentioned noun.", tags: ["The"] },
+                        { name: "Indefinite Articles", desc: "Refers to a general, unspecific, or newly introduced singular noun.", tags: ["A", "An"] },
+                        { name: "Quantifiers", desc: "Determines the amount or quantity of the noun.", tags: ["some", "many", "few", "enough", "all"] },
+                        { name: "Demonstratives", desc: "Points to specific nouns based on physical or temporal distance.", tags: ["this", "that", "these", "those"] }
+                    ],
+                    rulesTitle: "The Vowel Sound Rule & The Zero Article",
+                    rules: [
+                        "<strong>The Sound Rule (A vs. An):</strong> It depends entirely on the SOUND of the next word, not the spelling. Use 'A' before consonant sounds (<em>A university</em> - 'y' sound). Use 'An' before vowel sounds (<em>An hour</em> - 'h' is silent, starts with 'o' sound).",
+                        "<strong>The Zero Article (No Article):</strong> Do NOT use articles before: Plural generalities (<em>Dogs are loyal</em>), Uncountable generalities (<em>Water is essential</em>), Languages (<em>English</em>), Academic Subjects (<em>Mathematics</em>), or Meals (<em>I ate breakfast</em>).",
+                        "<strong>Geographical 'The' Rules:</strong> Use 'The' for oceans, rivers, deserts, and plural countries (<em>The Pacific, The Sahara, The USA, The Netherlands</em>). Do NOT use 'The' for single mountains, lakes, or singular countries (<em>Mount Everest, Lake Victoria, France</em>)."
+                    ]
+                }
+            ],
+            advanced: {
+                tenses: {
+                    title: "The 12 English Tenses", subtitle: "The ultimate matrix of time and verb aspect. Mastering this matrix allows you to pinpoint exact moments in time.", color: "#0369a1", bg: "#e0f2fe",
+                    rows: [
+                        { name: "Simple Present", formula: "S + V1 (base/s)", example: "She <strong>analyzes</strong> data.", use: "Habits, universal facts, fixed schedules." },
+                        { name: "Present Continuous", formula: "S + is/am/are + V-ing", example: "She <strong>is analyzing</strong> data.", use: "Action happening right now, or temporary situations." },
+                        { name: "Present Perfect", formula: "S + has/have + V3", example: "She <strong>has analyzed</strong> data.", use: "Action completed in the unspecific past, with results relevant NOW." },
+                        { name: "Present Perfect Cont.", formula: "S + has/have been + V-ing", example: "She <strong>has been analyzing</strong> data.", use: "Action started in the past, continuing up to the present moment. Emphasizes duration." },
+                        { name: "Simple Past", formula: "S + V2 (past)", example: "She <strong>analyzed</strong> data.", use: "Completed action at a specific, finished time in the past." },
+                        { name: "Past Continuous", formula: "S + was/were + V-ing", example: "She <strong>was analyzing</strong> data.", use: "A background action that was in progress when another action interrupted it." },
+                        { name: "Past Perfect", formula: "S + had + V3", example: "She <strong>had analyzed</strong> data.", use: "The 'Past of the Past'. Used to show which of two past actions happened FIRST." },
+                        { name: "Past Perfect Cont.", formula: "S + had been + V-ing", example: "She <strong>had been analyzing</strong> data.", use: "Shows how long an action was ongoing before another past event occurred." },
+                        { name: "Simple Future", formula: "S + will + V1", example: "She <strong>will analyze</strong> data.", use: "Predictions, sudden decisions, or promises about the future." },
+                        { name: "Future Continuous", formula: "S + will be + V-ing", example: "She <strong>will be analyzing</strong> data.", use: "An action that will be in progress at a specific time in the future." },
+                        { name: "Future Perfect", formula: "S + will have + V3", example: "She <strong>will have analyzed</strong> data.", use: "An action that will be completely finished before a specific point in the future." },
+                        { name: "Future Perfect Cont.", formula: "S + will have been + V-ing", example: "She <strong>will have been analyzing</strong>.", use: "Emphasizes the duration of an action up to a future point in time." }
+                    ]
+                },
+                conditionals: {
+                    title: "The Conditionals (If... Then)", subtitle: "How to express logic, hypothetical situations, and regrets. A hallmark of advanced English.", color: "#8b5cf6", bg: "#f3e8ff",
+                    rulesTitle: "Conditional Formulations",
+                    rulesDesc: "Conditionals require two clauses: the 'If' clause (condition) and the 'Main' clause (result).",
+                    blocks: [
+                        { word: "Zero", label: "General Truths", desc: "If + Present ... Present", ex: "If you heat ice, it melts.", color: "#6d28d9", bg: "#ede9fe" },
+                        { word: "First", label: "Real Future", desc: "If + Present ... Will + V1", ex: "If I study, I will pass.", color: "#6d28d9", bg: "#ede9fe" },
+                        { word: "Second", label: "Unreal Present", desc: "If + Past ... Would + V1", ex: "If I won the lottery, I would travel.", color: "#6d28d9", bg: "#ede9fe" },
+                        { word: "Third", label: "Unreal Past (Regret)", desc: "If + Past Perf ... Would have + V3", ex: "If I had studied, I would have passed.", color: "#6d28d9", bg: "#ede9fe" }
+                    ],
+                    rules: [
+                        "<strong>Zero Conditional:</strong> Used for scientific facts or absolute certainties.",
+                        "<strong>First Conditional:</strong> Used for highly probable future outcomes. (e.g., <em>If it rains, I will take an umbrella.</em>)",
+                        "<strong>Second Conditional:</strong> Used for imagination, dreams, or highly unlikely present/future situations. Note: Always use 'were' instead of 'was'. (e.g., <em>If I were a bird, I would fly.</em>)",
+                        "<strong>Third Conditional:</strong> Used to express regret or reflect on a past that cannot be changed. (e.g., <em>If we had left earlier, we wouldn't have missed the flight.</em>)"
+                    ]
+                },
+                voices: {
+                    title: "Active vs. Passive Voice", subtitle: "Controlling the focus of your sentence. Who did what, and to whom?", color: "#b91c1c", bg: "#fef2f2",
+                    rulesTitle: "When to use Passive Voice",
+                    rulesDesc: "Active voice is standard (Subject does Action). Passive voice shifts the focus to the Receiver.",
+                    blocks: [
+                        { word: "Active", label: "Subject → Verb → Object", desc: "Clear, direct, energetic.", ex: "The dog bit the man.", color: "#991b1b", bg: "#fee2e2" },
+                        { word: "Passive", label: "Object → To Be + V3 → (By Subject)", desc: "Formal, objective, evasive.", ex: "The man was bitten (by the dog).", color: "#991b1b", bg: "#fee2e2" }
+                    ],
+                    rules: [
+                        "<strong>The 80/20 Rule:</strong> Write in the Active Voice 80% of the time. It is clearer, punchier, and uses fewer words.",
+                        "<strong>Use Passive When the Actor is Unknown:</strong> <em>'My car was stolen last night.'</em> (I don't know who stole it).",
+                        "<strong>Use Passive When the Receiver is More Important:</strong> <em>'The cure for cancer was discovered.'</em> (The cure is more important than the specific scientist).",
+                        "<strong>The Corporate Evasion (Use with caution):</strong> Passive voice hides blame. <em>'Mistakes were made.'</em> (Instead of 'I made a mistake')."
+                    ]
+                },
+                speaking: {
+                    title: "Advanced Speaking Mechanics", subtitle: "Transitioning from robotic, textbook grammar to fluid, native-sounding speech.", color: "#312e81", bg: "#e0e7ff",
+                    accordions: [
+                        {
+                            title: "1. Connected Speech (Why Natives Sound Fast)",
+                            content: `
+                                <p style="color: var(--text-muted); margin-bottom: 1rem;">Native speakers do not pronounce words in isolation. They blur the boundaries between words.</p>
+                                <ul style="margin-left: 1.5rem; line-height: 1.6;">
+                                    <li><strong>Catenation (Linking):</strong> When a word ends in a consonant and the next begins with a vowel, push the consonant to the next word. <br><em>"An apple"</em> sounds like <em>"A napple"</em>. <em>"Walk away"</em> sounds like <em>"Wal kaway"</em>.</li>
+                                    <li><strong>Elision (Dropping Sounds):</strong> We often drop 't' or 'd' sounds when squeezed between consonants. <br><em>"Next door"</em> becomes <em>"Nex door"</em>. <em>"I don't know"</em> becomes <em>"I dunno"</em>.</li>
+                                    <li><strong>Assimilation (Merging Sounds):</strong> When a 't' meets a 'y', it creates a 'ch' sound. <br><em>"Don't you?"</em> sounds like <em>"Don't-chu?"</em> <em>"Meet you"</em> sounds like <em>"Mee-chu"</em>.</li>
+                                </ul>`
+                        },
+                        {
+                            title: "2. The Rules of Intonation (Sentence Melody)",
+                            content: `
+                                <p style="color: var(--text-muted); margin-bottom: 1rem;">English uses pitch to convey grammatical meaning and emotion. Flat speech sounds confusing or rude.</p>
+                                <ul style="margin-left: 1.5rem; line-height: 1.6;">
+                                    <li><strong>Falling Intonation (↘):</strong> Your voice pitch drops at the very end of the sentence. Used for absolute statements, commands, and 'Wh-' questions (Who, What, Where, Why). <br><em>e.g., "What time is it ↘?" "I am going home ↘."</em></li>
+                                    <li><strong>Rising Intonation (↗):</strong> Your voice goes up at the end. Used strictly for Yes/No questions or to show shock. <br><em>e.g., "Are you coming with us ↗?" "You did what ↗?"</em></li>
+                                    <li><strong>Fall-Rise Intonation (↘↗):</strong> Used to show hesitation, doubt, or an incomplete thought. <br><em>e.g., "I think it's a good idea... (↘↗ but I'm not sure)."</em></li>
+                                </ul>`
+                        },
+                        {
+                            title: "3. Syllable Stress & Meaning Shifts",
+                            content: `
+                                <p style="color: var(--text-muted); margin-bottom: 1rem;">Many words in English are spelled exactly the same but change from a Noun to a Verb based entirely on which syllable you stress.</p>
+                                <div class="compare-grid">
+                                    <div class="compare-box compare-wrong"><div class="compare-label">Noun (Stress 1st Syllable)</div>"We need a new <strong>PRO</strong>-ject."<br>"I bought a <strong>PRE</strong>-sent."<br>"He is a <strong>RE</strong>-bel."</div>
+                                    <div class="compare-box compare-right"><div class="compare-label">Verb (Stress 2nd Syllable)</div>"The screen will pro-<strong>JECT</strong> the image."<br>"I will pre-<strong>SENT</strong> the data."<br>"She likes to re-<strong>BEL</strong> against rules."</div>
+                                </div>
+                                <p style="margin-top:1rem; color:var(--text-main)"><strong>Rule of Thumb:</strong> Nouns put the weight on the front. Verbs put the weight on the back action.</p>`
+                        }
+                    ]
+                }
+            }
+        };
+
+        // =====================================================================
+        // 2. RENDER FUNCTIONS - DOM GENERATION
+        // =====================================================================
+        
+        function renderNav() {
+            let linksHtml = grammarData.partsOfSpeech.map(pos => `<a href="#${pos.id}" class="nav-link">${pos.name}</a>`).join('');
+            linksHtml += `
+                <a href="#tenses" class="nav-link">Tenses</a>
+                <a href="#conditionals" class="nav-link">Conditionals</a>
+                <a href="#voices" class="nav-link">Voice</a>
+                <a href="#speaking" class="nav-link">Speaking</a>
+            `;
+            document.getElementById('navbar').innerHTML = `
+                <div class="nav-brand">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                    GrammarGuide
+                </div>
+                ${linksHtml}
+            `;
+        }
+
+        function renderHero() {
+            let pillsHtml = grammarData.partsOfSpeech.map(pos => 
+                `<a href="#${pos.id}" class="qi-pill" style="background:${pos.bg}; color:${pos.color}; border-color:${pos.color}">${pos.name}</a>`
+            ).join('');
+            pillsHtml += `
+                <a href="#tenses" class="qi-pill" style="background:#e0f2fe; color:#0369a1; border-color:#0369a1">Tenses</a>
+                <a href="#conditionals" class="qi-pill" style="background:#f3e8ff; color:#6d28d9; border-color:#6d28d9">Conditionals</a>
+                <a href="#voices" class="qi-pill" style="background:#fef2f2; color:#b91c1c; border-color:#b91c1c">Active/Passive</a>
+                <a href="#speaking" class="qi-pill" style="background:#e0e7ff; color:#312e81; border-color:#312e81">Speaking Guide</a>
+            `;
+
+            document.getElementById('hero-container').innerHTML = `
+                <div class="hero">
+                    <div class="badge-pill">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        University-Level Framework
+                    </div>
+                    <h1>${grammarData.hero.title}</h1>
+                    <p>${grammarData.hero.description}</p>
+                    <div class="quick-index">${pillsHtml}</div>
+                </div>
+            `;
+        }
+
+        function renderPartsOfSpeech() {
+            return grammarData.partsOfSpeech.map(pos => `
+                <section id="${pos.id}" class="animate-on-scroll">
+                    <div class="pos-header">
+                        <div class="pos-number" style="background:${pos.bg}; color:${pos.color};">${pos.number}</div>
+                        <div class="pos-title-wrap">
+                            <h2 style="color:${pos.color}">${pos.name}</h2>
+                            <div class="pos-subtitle">${pos.subtitle}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="def-card" style="border-color:${pos.color}">
+                        <div class="def-label" style="color:${pos.color}">Complete Definition</div>
+                        <div class="def-text">${pos.definition}</div>
+                    </div>
+
+                    ${pos.examples ? `
+                    <div class="examples-box" style="border-left-color:${pos.color}">
+                        <div class="examples-title">Contextual Examples</div>
+                        ${pos.examples.map(ex => `<div class="example-sentence">"${ex}"</div>`).join('')}
+                    </div>` : ''}
+
+                    <div class="grid-cards">
+                        ${pos.types.map(type => `
+                            <div class="info-card">
+                                <div class="card-title" style="color:${pos.color}">${type.name}</div>
+                                <div class="card-desc">${type.desc}</div>
+                                <div class="tag-wrap">${type.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="rules-box">
+                        <div class="rules-title">${pos.rulesTitle}</div>
+                        <ul class="rules-list">
+                            ${pos.rules.map(rule => `<li>${rule}</li>`).join('')}
+                        </ul>
+                    </div>
+                </section>
+            `).join('');
+        }
+
+        function renderAdvancedSections() {
+            const adv = grammarData.advanced;
+            
+            // 1. Tenses Table
+            const tensesHtml = `
+                <div class="section-divider"><span>Advanced Grammatical Structures</span></div>
+                <section id="tenses" class="animate-on-scroll">
+                    <div class="pos-header">
+                        <div class="pos-number" style="background:${adv.tenses.bg}; color:${adv.tenses.color};">10</div>
+                        <div class="pos-title-wrap">
+                            <h2 style="color:${adv.tenses.color}">${adv.tenses.title}</h2>
+                            <div class="pos-subtitle">${adv.tenses.subtitle}</div>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead><tr><th>Tense Name</th><th>Formula</th><th>Example</th><th>Application</th></tr></thead>
+                            <tbody>
+                                ${adv.tenses.rows.map(row => `
+                                    <tr>
+                                        <td class="tense-name" style="color:${adv.tenses.color}">${row.name}</td>
+                                        <td><span class="formula-tag">${row.formula}</span></td>
+                                        <td>${row.example}</td>
+                                        <td>${row.use}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            `;
+
+            // 2. Conditionals Blocks
+            const condBlocksHtml = adv.conditionals.blocks.map(block => `
+                <div class="info-card" style="border-top: 4px solid ${block.color}">
+                    <div class="card-title" style="color:${block.color}">${block.word} Conditional</div>
+                    <div class="card-desc" style="font-weight: 600; color:var(--text-main)">${block.label}</div>
+                    <span class="formula-tag" style="background:${block.bg}; color:${block.color}">${block.desc}</span>
+                    <div class="example-sentence" style="margin-top:1rem; font-size:1rem;">"${block.ex}"</div>
+                </div>
+            `).join('');
+
+            const condHtml = `
+                <section id="conditionals" class="animate-on-scroll">
+                    <div class="pos-header">
+                        <div class="pos-number" style="background:${adv.conditionals.bg}; color:${adv.conditionals.color};">11</div>
+                        <div class="pos-title-wrap">
+                            <h2 style="color:${adv.conditionals.color}">${adv.conditionals.title}</h2>
+                            <div class="pos-subtitle">${adv.conditionals.subtitle}</div>
+                        </div>
+                    </div>
+                    <div class="grid-cards" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">
+                        ${condBlocksHtml}
+                    </div>
+                    <div class="rules-box">
+                        <div class="rules-title">${adv.conditionals.rulesTitle}</div>
+                        <p style="margin-bottom: 1.5rem; color:#d1d5db; font-size: 1.1rem;">${adv.conditionals.rulesDesc}</p>
+                        <ul class="rules-list">${adv.conditionals.rules.map(r => `<li>${r}</li>`).join('')}</ul>
+                    </div>
+                </section>
+            `;
+
+            // 3. Voices Blocks
+             const voiceBlocksHtml = adv.voices.blocks.map(block => `
+                <div class="info-card" style="border-top: 4px solid ${block.color}">
+                    <div class="card-title" style="color:${block.color}; font-size: 1.5rem;">${block.word} Voice</div>
+                    <span class="formula-tag" style="background:${block.bg}; color:${block.color}">${block.label}</span>
+                    <div class="card-desc" style="margin-top: 0.5rem">${block.desc}</div>
+                    <div class="example-sentence" style="margin-top:auto; font-size:1.1rem; padding-top:1rem; border-top:1px solid var(--border-light)">"${block.ex}"</div>
+                </div>
+            `).join('');
+
+            const voiceHtml = `
+                <section id="voices" class="animate-on-scroll">
+                    <div class="pos-header">
+                        <div class="pos-number" style="background:${adv.voices.bg}; color:${adv.voices.color};">12</div>
+                        <div class="pos-title-wrap">
+                            <h2 style="color:${adv.voices.color}">${adv.voices.title}</h2>
+                            <div class="pos-subtitle">${adv.voices.subtitle}</div>
+                        </div>
+                    </div>
+                    <div class="grid-cards" style="grid-template-columns: 1fr 1fr;">
+                        ${voiceBlocksHtml}
+                    </div>
+                    <div class="rules-box">
+                        <div class="rules-title">${adv.voices.rulesTitle}</div>
+                        <p style="margin-bottom: 1.5rem; color:#d1d5db; font-size: 1.1rem;">${adv.voices.rulesDesc}</p>
+                        <ul class="rules-list">${adv.voices.rules.map(r => `<li>${r}</li>`).join('')}</ul>
+                    </div>
+                </section>
+            `;
+
+            // 4. Speaking Guide Accordions
+            const accordionsHtml = adv.speaking.accordions.map(acc => `
+                <div class="accordion">
+                    <div class="accordion-header">
+                        ${acc.title}
+                        <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="accordion-content">${acc.content}</div>
+                </div>
+            `).join('');
+
+            const speakingHtml = `
+                <div class="section-divider"><span>Practical Application</span></div>
+                <section id="speaking" class="animate-on-scroll">
+                    <div class="pos-header">
+                        <div class="pos-number" style="background:${adv.speaking.bg}; color:${adv.speaking.color};">13</div>
+                        <div class="pos-title-wrap">
+                            <h2 style="color:${adv.speaking.color}">${adv.speaking.title}</h2>
+                            <div class="pos-subtitle">${adv.speaking.subtitle}</div>
+                        </div>
+                    </div>
+                    ${accordionsHtml}
+                </section>
+            `;
+
+            return tensesHtml + condHtml + voiceHtml + speakingHtml;
+        }
+
+        // =====================================================================
+        // 3. INITIALIZATION & EVENT LISTENERS
+        // =====================================================================
+
+        function initApp() {
+            renderNav();
+            renderHero();
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = renderPartsOfSpeech() + renderAdvancedSections();
+            
+            attachEventListeners();
+        }
+
+        function attachEventListeners() {
+            // Progress Bar
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                document.getElementById("progress-bar").style.width = ((winScroll / height) * 100) + "%";
+            });
+
+            // Intersection Observer (Scroll Animations)
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 }); // Trigger a bit earlier for smoother flow
+
+            document.querySelectorAll('.animate-on-scroll').forEach(section => observer.observe(section));
+
+            // Accordions Logic
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordion = header.parentElement;
+                    document.querySelectorAll('.accordion').forEach(acc => {
+                        if (acc !== accordion) acc.classList.remove('open');
+                    });
+                    accordion.classList.toggle('open');
+                });
+            });
+
+            // Open first accordion by default
+            setTimeout(() => {
+                const firstAcc = document.querySelector('.accordion');
+                if(firstAcc) firstAcc.classList.add('open');
+            }, 600);
+
+            // Active Nav Links
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-link");
+
+            window.addEventListener("scroll", () => {
+                let current = "";
+                sections.forEach(section => {
+                    if (pageYOffset >= section.offsetTop - 180) {
+                        current = section.getAttribute("id");
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href").includes(current) && current !== "") {
+                        link.classList.add("active");
+                        link.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+                    }
+                });
+            });
+        }
+
+        // Boot up the framework
+        initApp();
+
+    </script>
+</body>
+</html>
